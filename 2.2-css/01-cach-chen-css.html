@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.2.1 — BA CÁCH CHÈN CSS + CASCADE + KẾ THỪA
+  1) External: file css/main.css nhúng qua <link>
+  2) Internal: thẻ <style> trong <head>
+  3) Inline: thuộc tính style trên thẻ
+  Thứ tự ưu tiên tăng dần: External < Internal < Inline < !important
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2.1 · Ba cách chèn CSS</title>
+
+  <!-- (1) EXTERNAL CSS -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- (2) INTERNAL CSS -->
+  <style>
+    .tag-internal { background: #1D559F; }
+    .demo-cascade { color: green; }   /* sẽ bị inline (đỏ) ghi đè bên dưới */
+    .tag-inline  { background: #e84393; }
+  </style>
+</head>
+<body>
+  <h1>Ba cách chèn CSS</h1>
+
+  <div class="card">
+    <p><span class="tag-external">External</span> màu nền lấy từ <code>css/main.css</code>.</p>
+    <p><span class="tag-internal">Internal</span> màu nền lấy từ thẻ <code>&lt;style&gt;</code>.</p>
+    <p><span class="tag-inline" style="background:#e84393;">Inline</span>
+       màu nền đặt ngay trên thẻ bằng thuộc tính <code>style</code>.</p>
+  </div>
+
+  <h2>Cascade — ai thắng khi xung đột?</h2>
+  <!-- .demo-cascade ở internal là green, nhưng inline style đỏ THẮNG vì ưu tiên cao hơn -->
+  <p class="demo-cascade" style="color:red;">
+    Class này khai báo <code>green</code> ở internal, nhưng inline <code>red</code> thắng.
+  </p>
+  <!-- !important ghi đè cả inline -->
+  <p class="demo-cascade" style="color:red;" >
+    <span style="color:blue !important;">Đoạn này dùng <code>!important</code> → luôn xanh.</span>
+  </p>
+
+  <h2>Kế thừa (inheritance)</h2>
+  <p>Cả trang dùng font <code>Arial</code> chỉ vì khai báo <code>font-family</code> một lần ở
+     <code>body</code> trong <code>main.css</code> — nhóm thuộc tính văn bản tự truyền xuống con.</p>
+
+  <p style="background:#e3f2fd;border-left:4px solid #1D559F;padding:10px 14px;">
+    Best practice: dự án thật gần như luôn dùng <strong>External CSS</strong>.
+    Mở DevTools → tab <em>Styles</em> để thấy quy tắc nào bị gạch ngang (bị ghi đè).</p>
+</body>
+</html>

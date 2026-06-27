@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.3.6 — HÌNH ẢNH RESPONSIVE
+  <picture> (đổi ảnh theo breakpoint — dễ thấy nhất),
+  srcset/sizes, quy tắc vàng max-width:100%, aspect-ratio.
+  THU NHỎ cửa sổ để thấy ảnh SMALL/MEDIUM/LARGE đổi nhau.
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3.6 · Hình ảnh responsive</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 16px; line-height: 1.6; }
+    h1, h2 { color:#1D559F; }
+    img { max-width: 100%; height: auto; display:block; border-radius:8px; }  /* quy tắc vàng */
+    .thumbs { display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; }
+    .thumbs img { aspect-ratio: 1 / 1; object-fit: cover; }  /* ô vuông đồng đều */
+  </style>
+</head>
+<body>
+  <h1>Hình ảnh responsive</h1>
+
+  <h2>1) &lt;picture&gt; — đổi hẳn ảnh theo breakpoint</h2>
+  <p>Thu hẹp/mở rộng cửa sổ rồi nạp lại trang: ảnh SMALL / MEDIUM / LARGE sẽ đổi.</p>
+  <picture>
+    <source media="(max-width: 600px)"  srcset="../assets/img-small.svg">
+    <source media="(max-width: 1200px)" srcset="../assets/img-medium.svg">
+    <img src="../assets/img-large.svg" alt="Ảnh demo responsive">
+  </picture>
+
+  <h2>2) srcset / sizes — trình duyệt tự chọn theo độ rộng</h2>
+  <img src="../assets/img-medium.svg"
+       srcset="../assets/img-small.svg 400w,
+               ../assets/img-medium.svg 800w,
+               ../assets/img-large.svg 1200w"
+       sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+       alt="Ảnh srcset demo">
+
+  <h2>3) Lưới thumbnail đồng đều (aspect-ratio + object-fit:cover)</h2>
+  <div class="thumbs">
+    <img src="../assets/photo.svg" alt="thumb 1">
+    <img src="../assets/rose.svg"  alt="thumb 2">
+    <img src="../assets/sky.svg"   alt="thumb 3">
+  </div>
+
+  <p style="background:#e3f2fd;border-left:4px solid #1D559F;padding:10px 14px;">
+    Ảnh thường là tài nguyên nặng nhất → ảnh hưởng LCP (Core Web Vitals). Best practice:
+    WebP/AVIF, khai báo <code>width/height</code> tránh CLS, thêm <code>loading="lazy"</code>
+    cho ảnh dưới màn hình đầu. Icon/logo nên dùng SVG (co giãn không vỡ).</p>
+</body>
+</html>

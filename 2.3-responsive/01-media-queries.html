@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.3.2 — MEDIA QUERIES
+  Cột co giãn 25% → 50% → 100% theo breakpoint, và đổi nền
+  theo orientation. THU NHỎ cửa sổ trình duyệt để thấy hiệu ứng.
+  Bước số 0: thẻ <meta viewport> bên dưới (thiếu là vô hiệu hết).
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3.2 · Media Queries</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; margin:0; line-height:1.6; }
+    h1 { color:#1D559F; padding:0 16px; }
+    .hint { padding:0 16px; color:#555; }
+
+    .row::after { content:""; display:block; clear:both; }  /* clearfix cho float */
+    .column { float:left; width:25%; padding:10px; }        /* MẶC ĐỊNH: màn lớn 4 cột */
+    .column .inner { background:#1D559F; color:#fff; padding:24px; border-radius:8px; text-align:center; }
+
+    .badge { position:fixed; top:8px; right:8px; background:#04AA6D; color:#fff; padding:6px 10px; border-radius:6px; font-size:.8rem; }
+
+    /* ≤ 992px → 2 cột */
+    @media screen and (max-width: 992px) {
+      .column { width:50%; }
+      .badge::after { content:" · ≤992px (2 cột)"; }
+    }
+    /* ≤ 600px → 1 cột (xếp dọc) */
+    @media screen and (max-width: 600px) {
+      .column { width:100%; }
+      .badge { background:#e84393; }
+      .badge::after { content:" · ≤600px (1 cột)"; }
+    }
+    /* Đổi nền theo hướng thiết bị */
+    @media screen and (orientation: landscape) { body { background:#f1f8ff; } }
+    @media screen and (orientation: portrait)  { body { background:#fffaf0; } }
+  </style>
+</head>
+<body>
+  <div class="badge">Kéo hẹp cửa sổ ↔</div>
+  <h1>Media Queries</h1>
+  <p class="hint">Mặc định 4 cột (25%). ≤992px → 2 cột (50%). ≤600px → 1 cột (100%).</p>
+
+  <div class="row">
+    <div class="column"><div class="inner">Cột 1</div></div>
+    <div class="column"><div class="inner">Cột 2</div></div>
+    <div class="column"><div class="inner">Cột 3</div></div>
+    <div class="column"><div class="inner">Cột 4</div></div>
+  </div>
+
+  <p class="hint" style="margin-top:16px;">
+    Breakpoint phổ biến: ~600px (phone), ~768px (tablet), ~992px (laptop nhỏ), ~1200px (desktop).
+    Tư duy <strong>mobile-first</strong>: viết cho màn nhỏ trước rồi <code>min-width</code> bổ sung cho màn lớn.</p>
+</body>
+</html>

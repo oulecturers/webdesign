@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.2.9 — CSS ANIMATION
+  Transform (biến đổi hình học), Transition (chuyển tiếp mượt A→B),
+  Animation (@keyframes — nhiều mốc, tự chạy/lặp).
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2.9 · Animation</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 820px; margin: 24px auto; padding: 0 16px; line-height: 1.6; }
+    h1, h2 { color:#1D559F; }
+    .row { display:flex; gap:24px; flex-wrap:wrap; align-items:center; }
+    .box { width:90px; height:90px; background:#1D559F; color:#fff; display:flex; align-items:center; justify-content:center; border-radius:8px; font-size:.8rem; }
+
+    /* 1) TRANSFORM */
+    .rotate    { transform: rotate(30deg); }
+    .skew      { transform: skew(20deg, 10deg); background:#6c5ce7; }
+    .scale     { transform: scale(1.2); background:#e84393; }
+    .translate { transform: translate(20px, 10px); background:#00b894; }
+
+    /* 2) TRANSITION (cần tác nhân: hover) */
+    .trans { transition: background-color 0.6s ease, transform 0.6s ease; }
+    .trans:hover { background:#e84393; transform: scale(1.15) rotate(8deg); }
+
+    /* 3) ANIMATION (tự chạy, lặp vô hạn) */
+    @keyframes doimau {
+      0%   { background:red; }
+      25%  { background:blue; }
+      50%  { background:green; }
+      100% { background:gold; color:#333; }
+    }
+    .anim { animation: doimau 3s infinite; }
+
+    @keyframes chay {
+      from { transform: translateX(0); }
+      to   { transform: translateX(220px); }
+    }
+    .runner { animation: chay 2s ease-in-out infinite alternate; }
+
+    /* Accessibility: tôn trọng người dùng tắt chuyển động */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Animation</h1>
+
+  <h2>1) Transform — biến đổi hình học</h2>
+  <div class="row">
+    <div class="box rotate">rotate 30°</div>
+    <div class="box skew">skew</div>
+    <div class="box scale">scale 1.2</div>
+    <div class="box translate">translate</div>
+  </div>
+
+  <h2>2) Transition — rê chuột vào ô (A → B mượt)</h2>
+  <div class="row">
+    <div class="box trans">HOVER ME</div>
+  </div>
+
+  <h2>3) Animation — tự chạy &amp; lặp (@keyframes)</h2>
+  <div class="row">
+    <div class="box anim">đổi màu</div>
+    <div class="box runner">chạy qua lại</div>
+  </div>
+
+  <p style="background:#e3f2fd;border-left:4px solid #1D559F;padding:10px 14px;margin-top:16px;">
+    <strong>Transition vs Animation:</strong> transition chuyển 2 trạng thái và cần tác nhân
+    (hover/focus/click); animation đi qua nhiều mốc keyframes, tự chạy &amp; lặp vô hạn.</p>
+</body>
+</html>

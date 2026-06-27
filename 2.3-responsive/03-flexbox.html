@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.3.4 — CSS FLEXBOX (TRỌNG TÂM THI) — bảng điều khiển trực tiếp
+  Đổi flex-direction / flex-wrap / justify-content / align-items
+  bằng dropdown để THẤY NGAY tác dụng. (Một chút JS để đổi style.)
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3.4 · Flexbox</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 16px; line-height: 1.6; }
+    h1 { color:#1D559F; }
+    .controls { display:flex; gap:16px; flex-wrap:wrap; background:#f1f5fb; padding:12px; border-radius:8px; }
+    .controls label { display:flex; flex-direction:column; font-size:.85rem; font-weight:bold; color:#1D559F; }
+    select { padding:4px; margin-top:2px; }
+
+    /* CONTAINER flex — 4 thuộc tính chỉnh được qua bảng điều khiển */
+    #container {
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+      align-items:stretch;
+      gap:10px;
+      min-height:240px;
+      margin-top:14px;
+      border:2px dashed #1D559F;
+      border-radius:8px;
+      padding:10px;
+      background:#fafcff;
+    }
+    #container .item {
+      background:#020732; color:#fafafa; padding:14px 20px; border-radius:6px; font-weight:bold;
+    }
+    #container .item:nth-child(2) { padding-top:34px; padding-bottom:34px; } /* cao khác nhau để thấy align */
+    .code { font-family: monospace; background:#0d1117; color:#8ae234; padding:10px; border-radius:6px; margin-top:12px; font-size:.85rem; white-space:pre; overflow:auto; }
+  </style>
+</head>
+<body>
+  <h1>Flexbox — chơi thử trực tiếp</h1>
+
+  <div class="controls">
+    <label>flex-direction
+      <select id="dir">
+        <option>row</option><option>row-reverse</option>
+        <option>column</option><option>column-reverse</option>
+      </select>
+    </label>
+    <label>flex-wrap
+      <select id="wrap"><option>wrap</option><option>nowrap</option><option>wrap-reverse</option></select>
+    </label>
+    <label>justify-content
+      <select id="jc">
+        <option>flex-start</option><option>center</option><option>flex-end</option>
+        <option>space-between</option><option>space-around</option><option>space-evenly</option>
+      </select>
+    </label>
+    <label>align-items
+      <select id="ai"><option>stretch</option><option>flex-start</option><option>center</option><option>flex-end</option></select>
+    </label>
+  </div>
+
+  <div id="container">
+    <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+    <div class="item">4</div><div class="item">5</div><div class="item">6</div>
+  </div>
+
+  <div class="code" id="code"></div>
+
+  <p style="background:#e3f2fd;border-left:4px solid #1D559F;padding:10px 14px;">
+    <code>justify-content</code> đi theo <strong>trục chính</strong> (cùng hướng flex-direction);
+    <code>align-items</code> đi theo <strong>trục phụ</strong> (vuông góc). Đổi direction sang
+    <code>column</code> để thấy hai trục hoán đổi vai trò.</p>
+
+  <script>
+    // JS nhỏ chỉ để gắn lựa chọn vào style — học kỹ ở Chương 3
+    const c = document.getElementById('container');
+    const code = document.getElementById('code');
+    const ids = ['dir','wrap','jc','ai'];
+    const map = { dir:'flexDirection', wrap:'flexWrap', jc:'justifyContent', ai:'alignItems' };
+    function render() {
+      ids.forEach(id => c.style[map[id]] = document.getElementById(id).value);
+      code.textContent =
+        '.container {\n' +
+        '  display: flex;\n' +
+        '  flex-direction: ' + dir.value + ';\n' +
+        '  flex-wrap: ' + wrap.value + ';\n' +
+        '  justify-content: ' + jc.value + ';\n' +
+        '  align-items: ' + ai.value + ';\n}';
+    }
+    ids.forEach(id => document.getElementById(id).addEventListener('change', render));
+    render();
+  </script>
+</body>
+</html>

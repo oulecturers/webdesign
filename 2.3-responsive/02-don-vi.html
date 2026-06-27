@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.3.3 — CÁC ĐƠN VỊ
+  Tuyệt đối (px) vs tương đối (em, rem, %, vw, vh) và các hàm
+  hiện đại: clamp(), min(), max(), calc(). THAY ĐỔI kích thước
+  cửa sổ để thấy vw/clamp co giãn.
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3.3 · Đơn vị</title>
+  <style>
+    :root { font-size: 16px; }   /* 1rem = 16px (mốc gốc của rem) */
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; max-width: 860px; margin: 0 auto; padding: 16px; line-height: 1.6; }
+    h1, h2 { color:#1D559F; }
+    .demo { border:1px solid #cfd8dc; border-radius:8px; padding:12px; margin:8px 0; }
+
+    .px  { font-size: 24px; }     /* tuyệt đối */
+    .rem { font-size: 1.5rem; }   /* = 1.5 × 16 = 24px, theo gốc html */
+    .parent-em { font-size: 20px; }
+    .em  { font-size: 1.5em; }    /* = 1.5 × 20 = 30px, theo CHA */
+
+    .vw-box { width: 50vw; background:#c8e6c9; padding:8px; }   /* 50% bề ngang viewport */
+    .vh-box { height: 20vh; background:#bbdefb; padding:8px; }  /* 20% chiều cao viewport */
+
+    /* Hàm hiện đại */
+    .clamp-title { font-size: clamp(1.5rem, 5vw, 3rem); color:#e84393; }  /* tự co giãn có chặn min/max */
+    .minw { width: min(90%, 600px); background:#fff3e0; padding:8px; }    /* nhỏ hơn trong 2 */
+    .calc { width: calc(100% - 120px); background:#ede7f6; padding:8px; } /* full trừ 120px */
+  </style>
+</head>
+<body>
+  <h1>Các đơn vị CSS</h1>
+
+  <h2>1) px · rem · em</h2>
+  <div class="demo px">px: 24px cố định</div>
+  <div class="demo rem">rem: 1.5rem = 24px (theo gốc &lt;html&gt;)</div>
+  <div class="demo parent-em">cha có font-size 20px
+    <div class="em">em: 1.5em = 30px (theo CHA, dễ "cộng dồn")</div>
+  </div>
+
+  <h2>2) vw · vh (theo viewport)</h2>
+  <div class="demo vw-box">width: 50vw — rộng bằng nửa cửa sổ</div>
+  <div class="demo vh-box">height: 20vh — cao bằng 20% cửa sổ</div>
+
+  <h2>3) clamp() · min() · calc()</h2>
+  <p class="clamp-title">Tiêu đề co giãn (clamp 1.5rem→5vw→3rem)</p>
+  <div class="demo minw">width: min(90%, 600px)</div>
+  <div class="demo calc">width: calc(100% - 120px)</div>
+
+  <p style="background:#e3f2fd;border-left:4px solid #1D559F;padding:10px 14px;">
+    <code>rem</code> được ưa dùng hơn <code>em</code> vì quy về MỘT mốc duy nhất ở
+    <code>&lt;html&gt;</code>, không "cộng dồn" theo từng cấp cha như <code>em</code>.</p>
+</body>
+</html>

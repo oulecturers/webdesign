@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.1.2 — THẺ, THÀNH PHẦN & THUỘC TÍNH
+  Mục tiêu: lồng thẻ đúng thứ tự, phân biệt block vs inline,
+  và 4 thuộc tính phổ biến: id, class, title, style.
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1.2 · Thẻ &amp; thuộc tính</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 24px auto; padding: 0 16px; line-height: 1.6; }
+    h1 { color: #1D559F; }
+    .subject { font-family: Tahoma; }
+    .box-block  { background: #e3f2fd; border: 1px solid #90caf9; padding: 8px; margin: 4px 0; }
+    .box-inline { background: #ffe0b2; border: 1px solid #ffb74d; padding: 8px; }
+    .note { background:#fff8e1; border-left:4px solid #ffb300; padding:10px 14px; }
+  </style>
+</head>
+<body>
+  <h1>Thẻ, thành phần &amp; thuộc tính</h1>
+
+  <!-- LỒNG THẺ: đóng theo nguyên tắc "vào sau, ra trước" -->
+  <h2>1) Lồng thẻ đúng thứ tự</h2>
+  <p>Đúng: <b><i>vào sau ra trước</i></b> — <code>&lt;b&gt;&lt;i&gt;...&lt;/i&gt;&lt;/b&gt;</code></p>
+
+  <!-- 4 thuộc tính phổ biến: id (duy nhất), class (gom nhóm), title (tooltip), style -->
+  <h2>2) id · class · title · style</h2>
+  <div title="Rê chuột để thấy tooltip này (thuộc tính title)">
+    <h3 style="color:red;"   id="html"       class="subject">HTML</h3>
+    <h3 style="color:blue;"  id="css"        class="subject">CSS</h3>
+    <h3 style="color:green;" id="javascript" class="subject">JavaScript</h3>
+  </div>
+  <p class="note"><code>class</code> có thể trùng nhau, nhưng mỗi <code>id</code>
+     phải <strong>duy nhất</strong> trong trang.</p>
+
+  <!-- BLOCK vs INLINE -->
+  <h2>3) Block vs Inline</h2>
+  <p><strong>Block</strong> (div, p, h1…): luôn xuống dòng mới, chiếm hết chiều rộng.</p>
+  <div class="box-block">block #1</div>
+  <div class="box-block">block #2 (nằm dòng riêng)</div>
+
+  <p><strong>Inline</strong> (span, a, img…): nằm chung dòng, chỉ chiếm đủ chỗ cần thiết.</p>
+  <p>
+    <span class="box-inline">inline #1</span>
+    <span class="box-inline">inline #2</span>
+    <span class="box-inline">inline #3 (cùng một dòng)</span>
+  </p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.4.4 — TẠO HÌNH DẠNG CHO ẢNH (clip-path & shape-outside)
+  border-radius (tròn), clip-path ellipse/polygon (ngôi sao),
+  shape-outside cho văn bản chảy quanh ảnh tròn.
+  Lấy toạ độ polygon trực quan: https://clippy.fullstack.edu.vn/
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4.4 · Clip-path · Shape</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 820px; margin: 0 auto; padding: 16px; line-height: 1.6; }
+    h1, h2 { color:#1D559F; }
+    .row { display:flex; gap:24px; flex-wrap:wrap; align-items:center; }
+    .row img { width:160px; height:160px; object-fit:cover; }
+
+    .circle  { border-radius: 50%; }
+    .ellipse { clip-path: ellipse(50% 35%); }
+    .star    { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+                                   50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+    .hexagon { clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); }
+
+    /* shape-outside: văn bản chảy bao quanh ảnh tròn */
+    .flow img { float:left; shape-outside: circle(50%); clip-path: circle(48%);
+                width:150px; height:150px; margin:0 16px 8px 0; }
+  </style>
+</head>
+<body>
+  <h1>Clip-path &amp; Shape</h1>
+
+  <h2>1) Các hình dạng cho ảnh</h2>
+  <div class="row">
+    <figure style="margin:0;text-align:center"><img class="circle" src="../assets/rose.svg" alt="tròn"><figcaption>border-radius:50%</figcaption></figure>
+    <figure style="margin:0;text-align:center"><img class="ellipse" src="../assets/rose.svg" alt="ellipse"><figcaption>ellipse()</figcaption></figure>
+    <figure style="margin:0;text-align:center"><img class="star" src="../assets/rose.svg" alt="sao"><figcaption>polygon (ngôi sao)</figcaption></figure>
+    <figure style="margin:0;text-align:center"><img class="hexagon" src="../assets/rose.svg" alt="lục giác"><figcaption>polygon (lục giác)</figcaption></figure>
+  </div>
+
+  <h2>2) shape-outside — văn bản chảy quanh ảnh tròn</h2>
+  <div class="flow">
+    <img src="../assets/photo.svg" alt="ảnh tròn">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Khi đặt
+       <code>float:left</code> kèm <code>shape-outside: circle(50%)</code>, các dòng văn bản
+       không chỉ chừa một khối chữ nhật mà còn ôm theo <strong>đường tròn</strong> của ảnh.
+       <code>clip-path: circle()</code> cắt ảnh thành hình tròn để khớp với vùng chảy.
+       Càng nhiều chữ, hiệu ứng ôm cong càng rõ. Đây là kỹ thuật hay dùng cho ảnh chân dung
+       trong bài viết, tạp chí để bố cục mềm mại, sinh động hơn so với ảnh vuông truyền thống.</p>
+  </div>
+
+  <p style="background:#fff8e1;border-left:4px solid #ffb300;padding:10px 14px;">
+    Lấy toạ độ <code>polygon()</code> nhanh bằng công cụ trực quan
+    <code>clippy.fullstack.edu.vn</code> — kéo các điểm rồi copy CSS.</p>
+</body>
+</html>

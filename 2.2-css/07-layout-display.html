@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.2.8 — CSS LAYOUT (phần display cổ điển)
+  display block/inline/inline-block, ẩn/hiện
+  (display:none vs visibility:hidden), bố cục multicolumn.
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2.8 · Layout · display</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 820px; margin: 24px auto; padding: 0 16px; line-height: 1.6; }
+    h1, h2 { color:#1D559F; }
+    .b { border:2px dotted #1D559F; padding:8px; margin:4px; width:120px; height:50px; text-align:center; }
+
+    .as-block        { display:block; }
+    .as-inline       { display:inline; background:#ffe082; }   /* width/height bị bỏ qua */
+    .as-inline-block { display:inline-block; background:#c8e6c9; }
+
+    .hidden-none { display:none; }
+    .hidden-vis  { visibility:hidden; }
+
+    .multicolumn { column-count:3; column-gap:40px; column-rule:2px solid #1D559F; text-align:justify; }
+  </style>
+</head>
+<body>
+  <h1>Layout · display</h1>
+
+  <h2>1) block · inline · inline-block</h2>
+  <div class="b as-block">block #1</div>
+  <div class="b as-block">block #2 (mỗi cái 1 dòng)</div>
+
+  <p>inline (width/height vô tác dụng):
+    <span class="b as-inline">inline A</span>
+    <span class="b as-inline">inline B</span>
+  </p>
+
+  <p>inline-block (cùng dòng NHƯNG nhận width/height):
+    <span class="b as-inline-block">ib A</span>
+    <span class="b as-inline-block">ib B</span>
+  </p>
+
+  <h2>2) Ẩn / hiện</h2>
+  <p>
+    <span class="b as-inline-block">A</span>
+    <span class="b as-inline-block hidden-none">B (display:none — mất &amp; KHÔNG chiếm chỗ)</span>
+    <span class="b as-inline-block">C ngay sát A</span>
+  </p>
+  <p>
+    <span class="b as-inline-block">A</span>
+    <span class="b as-inline-block hidden-vis">B (visibility:hidden — ẩn nhưng GIỮ chỗ)</span>
+    <span class="b as-inline-block">C cách một ô trống</span>
+  </p>
+
+  <h2>3) Bố cục nhiều cột (multicolumn)</h2>
+  <div class="multicolumn">
+    <p>HTML là ngôn ngữ đánh dấu chuẩn để tạo trang web. CSS quy định cách trình bày.
+    Bố cục nhiều cột chia nội dung dài thành các cột như báo/tạp chí, giúp người đọc
+    đỡ mỏi mắt khi dòng quá dài. Trình duyệt tự cân nội dung sang các cột. Bạn có thể
+    điều chỉnh số cột bằng column-count, khoảng cách bằng column-gap và thêm đường kẻ
+    giữa các cột bằng column-rule. Đây là cách nhanh để dàn văn bản nhiều cột mà không
+    cần Flexbox hay Grid.</p>
+  </div>
+</body>
+</html>

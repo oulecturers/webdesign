@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.4.1 — BIẾN CSS (Custom Properties)
+  Khai báo --var, dùng var(); phạm vi global (:root) vs local;
+  ứng dụng dark mode bằng prefers-color-scheme.
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4.1 · Biến CSS</title>
+  <style>
+    /* GLOBAL — dùng được mọi nơi */
+    :root {
+      --primary: #1D559F;
+      --accent:  #e84393;
+      --radius:  10px;
+      --bg: #ffffff;
+      --text: #1a1a1a;
+    }
+    /* Dark mode: đảo giá trị biến theo cài đặt hệ điều hành */
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1a1a1a; --text:#f0f0f0; --primary:#74b9ff; }
+    }
+
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 0 auto; padding: 16px;
+           line-height: 1.6; background: var(--bg); color: var(--text); }
+    h1, h2 { color: var(--primary); }
+
+    .btn { background: var(--primary); color:#fff; border:none;
+           padding: 10px 18px; border-radius: var(--radius); cursor:pointer; }
+    .btn.accent { background: var(--accent); }
+
+    .card {
+      --card-pad: 20px;            /* LOCAL — chỉ trong .card */
+      border: 2px solid var(--primary);
+      border-radius: var(--radius);
+      padding: var(--card-pad);
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Biến CSS</h1>
+  <p>Khai báo một lần ở <code>:root</code>, dùng lại bằng <code>var(--ten)</code>.
+     Đổi màu chủ đạo cả trang chỉ cần sửa <strong>một dòng</strong>.</p>
+
+  <button class="btn">Nút chính (--primary)</button>
+  <button class="btn accent">Nút phụ (--accent)</button>
+
+  <div class="card">
+    <h2>Thẻ dùng biến cục bộ</h2>
+    <p>Padding của thẻ này lấy từ biến <code>--card-pad</code> khai báo ngay trong <code>.card</code>.</p>
+  </div>
+
+  <p style="margin-top:16px; opacity:.85;">
+    Thử bật <strong>Dark mode</strong> trong cài đặt hệ điều hành (hoặc DevTools →
+    Rendering → emulate prefers-color-scheme) — toàn trang tự đổi sáng/tối nhờ biến CSS.</p>
+</body>
+</html>

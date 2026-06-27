@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.3.5 — CSS GRID (TRỌNG TÂM THI)
+  fr / repeat / minmax, đặt vị trí item bằng grid-column/grid-row,
+  và bố cục tổng thể bằng grid-template-areas (responsive).
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3.5 · Grid</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 16px; line-height: 1.6; }
+    h1, h2 { color:#1D559F; }
+
+    /* 1) Lưới 3 cột tỷ lệ 1:2:1 */
+    .g1 { display:grid; gap:10px; grid-template-columns: 1fr 2fr 1fr; }
+    .g1 .item { height:50px; background:#74b9ff; color:#fff; display:flex; align-items:center; justify-content:center; border-radius:6px; }
+
+    /* 2) Đặt vị trí item cụ thể */
+    .g2 { display:grid; gap:8px; grid-template-columns: repeat(3, 1fr); grid-auto-rows:60px; }
+    .g2 .item { background:#a29bfe; color:#fff; display:flex; align-items:center; justify-content:center; border-radius:6px; }
+    .g2 .item:nth-child(1) { grid-column:1/3; background:#e84393; }  /* chiếm 2 cột */
+    .g2 .item:nth-child(2) { grid-row:1/3; background:#00b894; }     /* chiếm 2 hàng */
+
+    /* 3) Layout tổng thể bằng grid-template-areas (responsive) */
+    .page {
+      display:grid;
+      grid-template-areas:
+        "header header"
+        "sidebar content"
+        "footer footer";
+      grid-template-rows: 60px 1fr 40px;
+      grid-template-columns: 200px 1fr;
+      gap:10px;
+      height: 360px;
+    }
+    .page > * { color:#fff; display:flex; align-items:center; justify-content:center; border-radius:6px; }
+    .page .header  { grid-area: header;  background:#f8b400; }
+    .page .sidebar { grid-area: sidebar; background:#6ab04c; }
+    .page .content { grid-area: content; background:#2980b9; }
+    .page .footer  { grid-area: footer;  background:#eb4d4b; }
+
+    /* Responsive: màn nhỏ -> dồn 1 cột, xếp dọc */
+    @media (max-width: 600px) {
+      .page {
+        grid-template-areas: "header" "content" "sidebar" "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px auto auto 40px;
+        height:auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Grid</h1>
+
+  <h2>1) grid-template-columns: 1fr 2fr 1fr (5 item tự xuống dòng)</h2>
+  <div class="g1">
+    <div class="item">01</div><div class="item">02</div><div class="item">03</div>
+    <div class="item">04</div><div class="item">05</div>
+  </div>
+
+  <h2>2) Đặt vị trí bằng grid-column / grid-row</h2>
+  <div class="g2">
+    <div class="item">A (2 cột)</div>
+    <div class="item">B (2 hàng)</div>
+    <div class="item">C</div><div class="item">D</div><div class="item">E</div>
+  </div>
+
+  <h2>3) grid-template-areas — layout tổng thể (thu nhỏ ≤600px để thấy xếp dọc)</h2>
+  <div class="page">
+    <header class="header">Header</header>
+    <aside class="sidebar">Sidebar</aside>
+    <main class="content">Content</main>
+    <footer class="footer">Footer</footer>
+  </div>
+
+  <p style="background:#e3f2fd;border-left:4px solid #1D559F;padding:10px 14px;">
+    <strong>Grid</strong> cho bố cục tổng thể (2 chiều); <strong>Flexbox</strong> cho một dãy
+    phần tử (1 chiều). Thường dùng chung trong một trang.</p>
+</body>
+</html>

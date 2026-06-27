@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.1.6 — SIÊU LIÊN KẾT & HÌNH ẢNH
+  a/target, anchor trong trang, đường dẫn file, img/alt,
+  liên kết bằng ảnh, mailto, image-map.
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1.6 · Liên kết &amp; hình ảnh</title>
+  <style>
+    html { scroll-behavior: smooth; }  /* cuộn mượt khi nhảy anchor */
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 24px auto; padding: 0 16px; line-height: 1.6; }
+    h1 { color:#1D559F; }
+    .spacer { height: 60vh; background: repeating-linear-gradient(45deg,#fafafa,#fafafa 20px,#f0f0f0 20px,#f0f0f0 40px); display:flex; align-items:center; justify-content:center; color:#999; }
+    table { border-collapse: collapse; width:100%; }
+    td, th { border:1px solid #ccc; padding:6px 10px; font-size:.92rem; }
+    code { background:#f4f4f4; padding:2px 5px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <h1>Liên kết &amp; hình ảnh</h1>
+
+  <h2>1) Liên kết cơ bản &amp; target</h2>
+  <p><a href="https://ou.edu.vn/" target="_blank" rel="noopener">Trường ĐH Mở TP.HCM</a>
+     — mở tab mới (<code>target="_blank"</code> kèm <code>rel="noopener"</code> cho an toàn).</p>
+  <p><a href="04-danh-sach.html">Liên kết nội bộ</a> (đường dẫn tương đối) tới bài "Danh sách".</p>
+
+  <h2>2) Liên kết neo trong trang (anchor)</h2>
+  <p><a href="#lienhe">↓ Nhảy tới phần Liên hệ ở cuối trang</a></p>
+
+  <h2>3) Đường dẫn file — bảng tra nhanh</h2>
+  <table>
+    <tr><th>Cú pháp</th><th>Ý nghĩa</th></tr>
+    <tr><td><code>logo.png</code></td><td>cùng thư mục</td></tr>
+    <tr><td><code>images/logo.png</code></td><td>thư mục con</td></tr>
+    <tr><td><code>../logo.png</code></td><td>lùi một cấp</td></tr>
+    <tr><td><code>/images/logo.png</code></td><td>từ gốc website</td></tr>
+    <tr><td><code>https://…</code></td><td>tuyệt đối (ngoài)</td></tr>
+  </table>
+
+  <h2>4) Hình ảnh &amp; liên kết bằng ảnh</h2>
+  <!-- alt: BẮT BUỘC. width/height giữ chỗ tránh "nhảy" layout -->
+  <a href="https://www.w3schools.com/" target="_blank" rel="noopener">
+    <img src="../assets/logo.svg" alt="Logo OU" width="120" height="120">
+  </a>
+  <p>Ảnh trên được bọc trong <code>&lt;a&gt;</code> → click vào ảnh sẽ mở liên kết.</p>
+
+  <h2>5) Liên kết gửi email (mailto)</h2>
+  <p>Gửi phản hồi
+    <a href="mailto:thanh.dh@ou.edu.vn?subject=Phản hồi&body=Tuyệt vời">tại đây</a>
+    (mở mail client trên máy).</p>
+
+  <h2>6) Bản đồ ảnh (image-map)</h2>
+  <img src="../assets/photo.svg" alt="ảnh nền" width="320" height="210" usemap="#demomap">
+  <map name="demomap">
+    <area shape="rect"   coords="0,0,160,210"   alt="nửa trái"  href="https://www.w3schools.com/html/" target="_blank">
+    <area shape="circle" coords="240,105,60"    alt="vùng tròn" href="https://www.w3schools.com/css/"  target="_blank">
+  </map>
+  <p>Di chuột vào nửa trái / vùng tròn bên phải để thấy 2 liên kết khác nhau trên cùng 1 ảnh.</p>
+
+  <div class="spacer">… cuộn xuống (minh hoạ anchor) …</div>
+
+  <h2 id="lienhe">Liên hệ</h2>
+  <p>Bạn vừa nhảy tới đây bằng anchor <code>href="#lienhe"</code>. <a href="#">↑ Về đầu trang</a></p>
+</body>
+</html>

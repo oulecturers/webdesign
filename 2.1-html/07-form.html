@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  2.1.8 — CÁC THẺ FORM
+  input các loại, radio/checkbox, textarea, select,
+  các input HTML5, fieldset/legend, và label (accessibility).
+  ============================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1.8 · Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 640px; margin: 24px auto; padding: 0 16px; line-height: 1.7; }
+    h1 { color:#1D559F; }
+    fieldset { margin-bottom: 20px; border:1px solid #cfd8dc; border-radius:8px; }
+    legend { font-weight:bold; color:#1D559F; padding:0 6px; }
+    label { display:inline-block; min-width:110px; }
+    input, textarea, select { padding:6px; }
+    .row { margin:6px 0; }
+  </style>
+</head>
+<body>
+  <h1>Các thẻ form</h1>
+
+  <!-- action="#": gửi về chính trang (demo). method=post giấu dữ liệu trong thân request -->
+  <form action="#" method="post" name="dangky">
+
+    <fieldset>
+      <legend>Đăng nhập</legend>
+      <!-- label gắn input qua for/id: click nhãn cũng focus được vào ô -->
+      <div class="row">
+        <label for="uId">Username:</label>
+        <input type="text" id="uId" name="username" placeholder="Nhập username" required>
+      </div>
+      <div class="row">
+        <label for="pId">Password:</label>
+        <input type="password" id="pId" name="password" placeholder="Nhập password" required>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Lựa chọn</legend>
+      <!-- RADIO cùng nhóm PHẢI cùng name -> mới chọn-một được -->
+      <div class="row">
+        <span style="min-width:110px;display:inline-block;">Giới tính:</span>
+        <label><input type="radio" name="gender" value="nam" checked> Nam</label>
+        <label><input type="radio" name="gender" value="nu"> Nữ</label>
+      </div>
+      <!-- CHECKBOX: chọn nhiều -->
+      <div class="row">
+        <span style="min-width:110px;display:inline-block;">Sở thích:</span>
+        <label><input type="checkbox" name="hobby" value="html" checked> HTML</label>
+        <label><input type="checkbox" name="hobby" value="css"> CSS</label>
+        <label><input type="checkbox" name="hobby" value="js"> JS</label>
+      </div>
+      <div class="row">
+        <label for="city">Thành phố:</label>
+        <select id="city" name="city">
+          <option value="hcm" selected>TP.HCM</option>
+          <option value="hn">Hà Nội</option>
+          <option value="dn">Đà Nẵng</option>
+        </select>
+      </div>
+      <div class="row">
+        <label for="note">Ghi chú:</label>
+        <textarea id="note" name="note" cols="40" rows="3" placeholder="Nhập nhiều dòng..."></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Các input HTML5 (giao diện chuyên dụng + tự kiểm hợp lệ)</legend>
+      <div class="row"><label for="email">Email:</label><input type="email" id="email" name="email"></div>
+      <div class="row"><label for="num">Số (0–100):</label><input type="number" id="num" min="0" max="100" step="5"></div>
+      <div class="row"><label for="rng">Thanh trượt:</label><input type="range" id="rng" min="0" max="100" step="5"></div>
+      <div class="row"><label for="date">Ngày:</label><input type="date" id="date" name="date"></div>
+      <div class="row"><label for="color">Màu:</label><input type="color" id="color" value="#1D559F"></div>
+      <div class="row"><label for="file">Tải file:</label><input type="file" id="file" name="file" accept="image/*"></div>
+    </fieldset>
+
+    <!-- hidden: không hiển thị nhưng vẫn gửi lên server -->
+    <input type="hidden" name="token" value="abc123">
+
+    <div class="row">
+      <input type="submit" value="Gửi">
+      <input type="reset"  value="Đặt lại">
+    </div>
+  </form>
+
+  <p style="background:#fff8e1;border-left:4px solid #ffb300;padding:10px 14px;">
+    Điều khiển <strong>không có <code>name</code></strong> sẽ KHÔNG được gửi lên server.
+    <code>id</code> dùng cho CSS/JS &amp; gắn <code>&lt;label&gt;</code>; <code>name</code> dùng để gửi dữ liệu.</p>
+</body>
+</html>
