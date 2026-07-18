@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   ============================================================
-  2.5 — TÁM PHONG CÁCH THIẾT KẾ WEB PHỔ BIẾN (bản redesign)
+  2.5 — CHÍN PHONG CÁCH THIẾT KẾ WEB PHỔ BIẾN (bản redesign)
   ------------------------------------------------------------
   Mỗi thẻ minh hoạ MỘT phong cách + kỹ thuật CSS cốt lõi tạo ra nó.
   Mục tiêu: NHẬN DIỆN phong cách, không học thuộc. Khung trang dùng
@@ -12,7 +12,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.5 · 8 phong cách thiết kế web</title>
+  <title>2.5 · 9 phong cách thiết kế web</title>
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
   <link rel="stylesheet" href="../../assets/lesson.css">
   <style>
@@ -77,6 +77,18 @@
       font-weight:600; text-transform:uppercase; letter-spacing:.5px; cursor:pointer;
       box-shadow:0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23); transition:box-shadow .3s, transform .2s; }
     .s-material .fab:hover { box-shadow:0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23); transform:translateY(-2px); }
+
+    /* 9. SCROLLYTELLING (kể chuyện theo cuộn) */
+    .s-scrolly { background:#0f172a; padding:0; display:block; height:170px; overflow-y:auto;
+      scroll-snap-type:y proximity; text-align:left; }
+    .s-scrolly .caption { position:sticky; top:0; z-index:2; background:#1d559f; color:#fff;
+      font-weight:700; font-size:.82rem; padding:8px 12px; box-shadow:0 2px 6px rgba(0,0,0,.35); }
+    .s-scrolly .panel { scroll-snap-align:start; min-height:118px; display:flex; align-items:center;
+      justify-content:center; color:#e6edf3; font-weight:600; padding:16px; }
+    .s-scrolly .panel:nth-child(2) { background:#1e293b; }
+    .s-scrolly .panel:nth-child(3) { background:#334155; }
+    .s-scrolly .panel:nth-child(4) { background:#0f766e; }
+    .s-scrolly .panel:nth-child(5) { background:#3f3f6e; }
   </style>
 </head>
 <body>
@@ -87,9 +99,9 @@
       <nav class="crumbs">
         <a href="../index.html">Chương 2</a><span>›</span>
         <a href="../index.html">2.5 Phong cách thiết kế</a><span>›</span>
-        8 phong cách phổ biến
+        9 phong cách phổ biến
       </nav>
-      <h1>8 phong cách thiết kế web phổ biến</h1>
+      <h1>9 phong cách thiết kế web phổ biến</h1>
       <p class="sub">Mỗi phong cách gắn với một vài <em>kỹ thuật CSS cốt lõi</em>. Mục tiêu của bài là
          <strong>nhận diện</strong> phong cách qua dấu hiệu thị giác, không phải học thuộc.</p>
       <div class="chips">
@@ -196,6 +208,30 @@ border: 1px solid rgba(255,255,255,.35);</div>
             0 3px 6px rgba(0,0,0,.23);
 /* hover → bóng cao hơn (elevation) */</div>
         <p class="d-when"><b>Nhận diện:</b> thẻ nổi có bóng tinh tế, nút nâng lên khi tương tác.</p>
+      </article>
+
+      <!-- 9 -->
+      <article class="d-card">
+        <div class="head"><h2>9 · Scrollytelling (Kể chuyện theo cuộn)</h2>
+          <p class="tech">Cốt lõi: nội dung/hoạt ảnh hé lộ dần theo thao tác CUỘN. Kỹ thuật: position: sticky giữ tiêu đề + scroll-snap bắt điểm dừng.</p></div>
+        <div class="d-stage s-scrolly">
+          <div class="caption">Tiêu đề luôn dính · cuộn bên trong khung ↓</div>
+          <div class="panel">Đoạn 1 — Mở đầu câu chuyện</div>
+          <div class="panel">Đoạn 2 — Diễn biến</div>
+          <div class="panel">Đoạn 3 — Cao trào</div>
+          <div class="panel">Đoạn 4 — Kết thúc</div>
+        </div>
+        <pre class="code" style="margin:12px 16px 16px"><code><span class="c">/* Khung cuộn: bắt điểm dừng khi cuộn dọc */</span>
+.scrolly {
+  <span class="k">height</span>: <span class="s">170px</span>;
+  <span class="k">overflow-y</span>: <span class="s">auto</span>;
+  <span class="k">scroll-snap-type</span>: <span class="s">y proximity</span>;
+}
+<span class="c">/* Tiêu đề luôn DÍNH khi các đoạn cuộn qua */</span>
+.scrolly .caption { <span class="k">position</span>: <span class="s">sticky</span>; <span class="k">top</span>: <span class="s">0</span>; }
+.scrolly .panel   { <span class="k">scroll-snap-align</span>: <span class="s">start</span>; }
+<span class="c">/* Nâng cao: animation-timeline: scroll() — hoạt ảnh chạy theo cuộn */</span></code></pre>
+        <p class="d-when"><b>Nhận diện:</b> nội dung hé lộ dần khi cuộn, tiêu đề/hình "dính" tại chỗ. Ứng dụng: báo dài dạng long-form, trang giới thiệu sản phẩm.</p>
       </article>
     </div>
 

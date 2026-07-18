@@ -149,6 +149,38 @@
   </header>
 
   <main class="lesson" id="main">
+    <!-- ==========  TỔNG QUAN RESPONSIVE (mục 2.3.1)  ========== -->
+    <section class="block" id="overview">
+      <h2><span class="num"><i class="fa-solid fa-compass" aria-hidden="true"></i></span> Tổng quan Responsive <span class="tag-base">Tổng quan · 2.3.1</span></h2>
+      <p class="lead"><strong>Responsive Web Design</strong> là cách làm <em>một</em> trang web tự thích ứng nhiều
+         kích thước màn hình — điện thoại → máy tính bảng → desktop — thay vì phải làm nhiều trang riêng cho từng
+         thiết bị. Trước khi đi sâu vào Media Queries, hãy nắm bốn khái niệm nền tảng dưới đây.</p>
+
+      <h3>Thẻ <code>&lt;meta viewport&gt;</code> — bắt buộc</h3>
+      <p>Không có dòng này, trình duyệt di động sẽ hiểu nhầm rằng màn rộng như desktop (~980px) rồi
+         <strong>thu nhỏ</strong> cả trang lại — chữ tí hon và media query gần như vô dụng. Đặt nó trong <code>&lt;head&gt;</code>:</p>
+      <pre class="code"><code><span class="k">&lt;meta</span> <span class="v">name</span>=<span class="s">"viewport"</span> <span class="v">content</span>=<span class="s">"width=device-width, initial-scale=1.0"</span><span class="k">&gt;</span></code></pre>
+      <div class="note"><p>Chính trang này đã có sẵn thẻ đó trong <code>&lt;head&gt;</code> — bạn có thể mở mã nguồn để kiểm chứng.</p></div>
+
+      <h3>Mobile-first</h3>
+      <p>Viết CSS <strong>gốc cho màn hẹp</strong> (điện thoại) trước, rồi dùng <code>@media (min-width: …)</code>
+         để <em>mở rộng</em> dần cho màn lớn. Cách đối lập — <strong>desktop-first</strong> — viết cho màn rộng
+         trước rồi thu hẹp bằng <code>max-width</code>. Mobile-first được khuyên dùng vì mã gọn và nhẹ cho điện thoại.</p>
+
+      <h3>Bố cục lỏng (fluid)</h3>
+      <p>Ưu tiên đơn vị <strong>tương đối</strong> — <code>%</code>, <code>rem</code>, <code>em</code>, <code>vw</code> —
+         thay cho <code>px</code> cứng, để khối và chữ tự co giãn theo màn hình. Chi tiết về các đơn vị này học ở
+         bài kế <strong>2.3.3 · Đơn vị</strong>.</p>
+
+      <h3>Breakpoint</h3>
+      <p><strong>Breakpoint</strong> (điểm ngắt) là bề rộng mà tại đó bố cục chuyển sang dạng khác. Vài mốc phổ biến:
+         <strong>~600px</strong> (điện thoại ngang), <strong>768px</strong> (tablet), <strong>992px</strong> (laptop),
+         <strong>1200px</strong> (desktop). Bảng breakpoint chi tiết nằm ở mục 9 phía dưới.</p>
+
+      <div class="callout tip"><p>Bài này tập trung vào <strong>Media Queries (2.3.2)</strong>. Flexbox, Grid và hình ảnh
+         responsive được trình bày ở các bài <strong>2.3.4 – 2.3.6</strong>.</p></div>
+    </section>
+
     <!-- ----------  MỤC LỤC  ---------- -->
     <nav class="toc" aria-label="Mục lục">
       <h2>Nội dung bài học</h2>

@@ -222,6 +222,24 @@
         transition: none !important;
       }
     }
+
+    /* 12) Multicolumn — rót văn bản dài thành nhiều cột kiểu báo/tạp chí */
+    .d-multicol {
+      column-count: 3;                 /* rót văn bản thành 3 cột */
+      column-gap: 24px;                /* khoảng cách giữa các cột */
+      column-rule: 1px solid #cfd8e6;  /* đường kẻ mảnh giữa hai cột */
+      color: #2c3542; font-size: .92rem; line-height: 1.7; text-align: justify;
+    }
+    .d-multicol h4 {
+      column-span: all;                /* tiêu đề trải ngang MỌI cột */
+      margin: 0 0 12px; padding-bottom: 8px;
+      color: #16407a; font-size: 1.1rem;
+      border-bottom: 2px solid #e3e8f0;
+    }
+    .d-multicol p { margin: 0 0 12px; break-inside: avoid; } /* không cắt đôi đoạn giữa 2 cột */
+    @media (max-width: 640px) {
+      .d-multicol { column-count: 1; }  /* mobile: về 1 cột cho dễ đọc */
+    }
   </style>
 </head>
 <body>
@@ -266,6 +284,7 @@
         <li><a href="#s9">fade-in / slide-in khi tải</a></li>
         <li><a href="#s10">Nút có hiệu ứng (thực hành)</a></li>
         <li><a href="#s11">Hiệu năng &amp; reduced-motion</a></li>
+        <li><a href="#s12">Multicolumn — chia cột</a></li>
       </ol>
     </nav>
 
@@ -729,6 +748,79 @@
       <div class="callout danger"><p><strong>Đừng lạm dụng.</strong> Hoạt ảnh phục vụ trải nghiệm, không phải để "khoe".
         Hiệu ứng quá nhiều/quá dài làm trang nặng và mệt mắt. Mỗi hiệu ứng nên có lý do (phản hồi thao tác,
         hướng sự chú ý, thể hiện trạng thái tải).</p></div>
+    </section>
+
+    <!-- ==========  12. MULTICOLUMN  ========== -->
+    <section class="block" id="s12">
+      <h2><span class="num">12</span> <code>Multicolumn</code> — chia văn bản thành nhiều cột <span class="tag-base">Cơ bản</span></h2>
+      <p class="lead">Nhóm thuộc tính <code>column-*</code> tự động rót một khối văn bản dài thành <strong>nhiều cột</strong>
+         như trang báo hay tạp chí — trình duyệt tự cân đối chiều cao các cột. Ta chỉ cần một khối HTML duy nhất,
+         không phải chia cột thủ công.</p>
+
+      <div class="demo">
+        <div class="demo-bar">Kết quả · 3 cột · có đường kẻ giữa · tiêu đề trải ngang</div>
+        <div class="demo-body">
+          <div class="d-multicol">
+            <h4>Thiết kế web đáp ứng</h4>
+            <p>Thiết kế web đáp ứng (responsive) giúp trang hiển thị tốt trên mọi kích thước màn hình, từ điện thoại
+               nhỏ gọn đến màn hình máy tính rộng. Ý tưởng cốt lõi là bố cục co giãn linh hoạt thay vì cố định theo pixel.</p>
+            <p>Ba trụ cột thường được nhắc tới là lưới linh hoạt (fluid grid), hình ảnh co giãn (flexible images) và
+               truy vấn phương tiện (media queries). Khi kết hợp, chúng cho phép một mã nguồn duy nhất phục vụ nhiều thiết bị.</p>
+            <p>Cách tiếp cận ưu tiên di động (mobile-first) khuyến khích viết CSS cho màn hình nhỏ trước, rồi bổ sung dần
+               cho màn hình lớn. Nhờ đó trang nhẹ và nhanh trên thiết bị yếu, đồng thời dễ mở rộng về sau.</p>
+            <p>Đơn vị tương đối như <code>%</code>, <code>rem</code>, <code>em</code>, <code>vw</code> và <code>vh</code>
+               giúp kích thước bám theo ngữ cảnh thay vì con số tuyệt đối — chìa khoá để nội dung tự thích nghi.</p>
+            <p>Cuối cùng, hãy luôn kiểm thử trên nhiều thiết bị thật và dùng công cụ mô phỏng của trình duyệt. Trải nghiệm
+               đọc mượt mà trên điện thoại quan trọng không kém giao diện đẹp trên máy tính để bàn.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        <p>Có hai cách "ra lệnh" số cột: đặt cứng số cột bằng <code>column-count</code>, hoặc đặt <strong>bề rộng mong muốn</strong>
+           của mỗi cột bằng <code>column-width</code> để trình duyệt <em>tự tính</em> số cột vừa với chỗ trống. Viết tắt cả hai
+           bằng <code>columns</code>.</p>
+      </div>
+
+      <table class="syntax">
+        <caption>Các thuộc tính multicolumn thường dùng</caption>
+        <thead><tr><th>Thuộc tính</th><th>Ý nghĩa</th><th>Ví dụ</th></tr></thead>
+        <tbody>
+          <tr><td><code>column-count</code></td><td>Số cột cố định</td><td><code>column-count: 3</code></td></tr>
+          <tr><td><code>column-width</code></td><td>Bề rộng lý tưởng mỗi cột (số cột tự tính)</td><td><code>column-width: 220px</code></td></tr>
+          <tr><td><code>columns</code> (gộp)</td><td>Viết tắt: <em>column-width column-count</em></td><td><code>columns: 220px 3</code></td></tr>
+          <tr><td><code>column-gap</code></td><td>Khoảng cách giữa các cột</td><td><code>column-gap: 24px</code></td></tr>
+          <tr><td><code>column-rule</code></td><td>Đường kẻ giữa hai cột (như <code>border</code>)</td><td><code>1px solid #cfd8e6</code></td></tr>
+          <tr><td><code>column-span</code></td><td><code>all</code> = phần tử trải ngang mọi cột</td><td><code>column-span: all</code></td></tr>
+          <tr><td><code>break-inside</code></td><td><code>avoid</code> = không cắt đôi khối giữa 2 cột</td><td><code>break-inside: avoid</code></td></tr>
+        </tbody>
+      </table>
+
+      <pre class="code"><code><span class="c">/* chia khối văn bản thành 3 cột, cách nhau 24px, có đường kẻ giữa */</span>
+.baiviet {
+  <span class="k">column-count</span>: <span class="v">3</span>;
+  <span class="k">column-gap</span>: <span class="v">24px</span>;
+  <span class="k">column-rule</span>: <span class="v">1px solid #cfd8e6</span>;
+}
+
+<span class="c">/* hoặc để trình duyệt tự tính số cột theo bề rộng mong muốn */</span>
+.baiviet { <span class="k">columns</span>: <span class="v">220px 3</span>; } <span class="c">/* column-width column-count */</span>
+
+<span class="c">/* tiêu đề trải ngang toàn bộ các cột */</span>
+.baiviet h2 { <span class="k">column-span</span>: <span class="v">all</span>; }
+
+<span class="c">/* không cắt đôi một đoạn / một thẻ giữa hai cột */</span>
+.baiviet p { <span class="k">break-inside</span>: <span class="v">avoid</span>; }
+
+<span class="c">/* mobile: giảm còn 1 cột cho dễ đọc */</span>
+<span class="k">@media</span> (max-width: 640px) {
+  .baiviet { <span class="k">column-count</span>: <span class="v">1</span>; }
+}</code></pre>
+
+      <div class="callout warn"><p>Multicolumn hợp cho <strong>văn bản dài</strong> dạng báo/tạp chí, ít hợp cho các khối UI phức tạp.
+        Trên màn hình hẹp, cột quá nhiều khiến người đọc phải cuộn lên-xuống theo từng cột rất mệt — hãy dùng
+        <code>@media</code> để <strong>giảm số cột</strong> (thậm chí về 1 cột) khi màn hình nhỏ, và thêm
+        <code>break-inside: avoid</code> để không xé đôi một đoạn hay một thẻ giữa hai cột.</p></div>
     </section>
   </main>
 
