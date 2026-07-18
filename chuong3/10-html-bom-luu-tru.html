@@ -18,7 +18,6 @@
   <title>3.9 · HTML BOM · Lưu trữ</title>
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../assets/lesson.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     /* ===== CSS MINH HOẠ RIÊNG CỦA BÀI ===== */
     .d-btn { background:#1D559F; color:#fff; border:none; border-radius:8px;
@@ -224,8 +223,8 @@ localStorage.setItem(<span class="s">"todos"</span>, JSON.stringify([<span class
       <div class="demo">
         <div class="demo-bar">Thử ngay — chọn theme, F5, theme vẫn được nhớ</div>
         <div class="demo-body">
-          <button class="d-btn" id="d-btn-sang"><i class="fa-solid fa-sun" aria-hidden="true"></i> Theme sáng</button>
-          <button class="d-btn" style="background:#0f172a" id="d-btn-toi"><i class="fa-solid fa-moon" aria-hidden="true"></i> Theme tối</button>
+          <button class="d-btn" id="d-btn-sang"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg> Theme sáng</button>
+          <button class="d-btn" style="background:#0f172a" id="d-btn-toi"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><path d="M12 3a6.36 6.36 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg> Theme tối</button>
           <button class="d-btn red" id="d-btn-quen">Xoá ghi nhớ</button>
           <div class="d-theme" id="d-khung">
             <p style="margin:0">Khung này đọc <code>localStorage.getItem("demo-theme")</code>

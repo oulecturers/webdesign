@@ -25,7 +25,6 @@
   <title>2.3.2 · Responsive — Media Queries</title>
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
   <link rel="stylesheet" href="../../assets/lesson.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     /* ===== CSS MINH HOẠ RIÊNG CỦA BÀI (tiền tố d-) ===== */
 
@@ -151,7 +150,7 @@
   <main class="lesson" id="main">
     <!-- ==========  TỔNG QUAN RESPONSIVE (mục 2.3.1)  ========== -->
     <section class="block" id="overview">
-      <h2><span class="num"><i class="fa-solid fa-compass" aria-hidden="true"></i></span> Tổng quan Responsive <span class="tag-base">Tổng quan · 2.3.1</span></h2>
+      <h2><span class="num"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span> Tổng quan Responsive <span class="tag-base">Tổng quan · 2.3.1</span></h2>
       <p class="lead"><strong>Responsive Web Design</strong> là cách làm <em>một</em> trang web tự thích ứng nhiều
          kích thước màn hình — điện thoại → máy tính bảng → desktop — thay vì phải làm nhiều trang riêng cho từng
          thiết bị. Trước khi đi sâu vào Media Queries, hãy nắm bốn khái niệm nền tảng dưới đây.</p>
@@ -378,12 +377,12 @@
         <div class="demo-body">
           <div class="d-compare">
             <div class="d-card-mf">
-              <h4><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Mobile-first (khuyên dùng)</h4>
+              <h4><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> Mobile-first (khuyên dùng)</h4>
               <p style="margin:0">CSS gốc dành cho điện thoại. Dùng <code>min-width</code> để <strong>thêm</strong>
                 quy tắc khi màn rộng dần. Nhẹ cho điện thoại, dễ bảo trì.</p>
             </div>
             <div class="d-card-df">
-              <h4><i class="fa-solid fa-desktop" aria-hidden="true"></i> Desktop-first</h4>
+              <h4><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Desktop-first</h4>
               <p style="margin:0">CSS gốc dành cho desktop. Dùng <code>max-width</code> để <strong>ghi đè</strong>
                 khi màn hẹp dần. Quen thuộc với web cũ, nhưng dễ phình quy tắc.</p>
             </div>
@@ -483,8 +482,8 @@
       <div class="demo">
         <div class="demo-bar">Một trong hai khối hiện tuỳ bề rộng (mốc 768px)</div>
         <div class="demo-body">
-          <div class="d-only-mobile"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Bạn đang xem ở màn HẸP (&lt; 768px) — khối "mobile"</div>
-          <div class="d-only-desktop"><i class="fa-solid fa-desktop" aria-hidden="true"></i> Bạn đang xem ở màn RỘNG (≥ 768px) — khối "desktop"</div>
+          <div class="d-only-mobile"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> Bạn đang xem ở màn HẸP (&lt; 768px) — khối "mobile"</div>
+          <div class="d-only-desktop"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Bạn đang xem ở màn RỘNG (≥ 768px) — khối "desktop"</div>
           <p class="muted" style="margin:10px 0 0">Thu nhỏ cửa sổ qua mốc 768px: khối này biến mất, khối kia hiện ra.</p>
         </div>
       </div>
@@ -559,12 +558,12 @@
         <caption>Bảng breakpoint tham khảo (mobile-first, dùng min-width)</caption>
         <thead><tr><th>Nhóm thiết bị</th><th>Bề rộng tiêu biểu</th><th>Media query gợi ý</th></tr></thead>
         <tbody>
-          <tr><td><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Điện thoại (mobile)</td><td>&lt; 600px</td><td><code>/* CSS gốc, không cần @media */</code></td></tr>
-          <tr><td><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Điện thoại ngang / phablet</td><td>≥ 600px</td><td><code>@media (min-width: 600px)</code></td></tr>
-          <tr><td><i class="fa-solid fa-tablet-screen-button" aria-hidden="true"></i> Máy tính bảng (tablet)</td><td>≥ 768px</td><td><code>@media (min-width: 768px)</code></td></tr>
-          <tr><td><i class="fa-solid fa-laptop" aria-hidden="true"></i> Laptop</td><td>≥ 992px</td><td><code>@media (min-width: 992px)</code></td></tr>
-          <tr><td><i class="fa-solid fa-desktop" aria-hidden="true"></i> Desktop</td><td>≥ 1200px</td><td><code>@media (min-width: 1200px)</code></td></tr>
-          <tr><td><i class="fa-solid fa-desktop" aria-hidden="true"></i> Desktop lớn</td><td>≥ 1400px</td><td><code>@media (min-width: 1400px)</code></td></tr>
+          <tr><td><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> Điện thoại (mobile)</td><td>&lt; 600px</td><td><code>/* CSS gốc, không cần @media */</code></td></tr>
+          <tr><td><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> Điện thoại ngang / phablet</td><td>≥ 600px</td><td><code>@media (min-width: 600px)</code></td></tr>
+          <tr><td><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> Máy tính bảng (tablet)</td><td>≥ 768px</td><td><code>@media (min-width: 768px)</code></td></tr>
+          <tr><td><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg> Laptop</td><td>≥ 992px</td><td><code>@media (min-width: 992px)</code></td></tr>
+          <tr><td><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Desktop</td><td>≥ 1200px</td><td><code>@media (min-width: 1200px)</code></td></tr>
+          <tr><td><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.125em"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Desktop lớn</td><td>≥ 1400px</td><td><code>@media (min-width: 1400px)</code></td></tr>
         </tbody>
       </table>
 
