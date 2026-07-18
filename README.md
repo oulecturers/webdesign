@@ -19,9 +19,12 @@ WDCode/                        ← repo git (cả môn học)
 │   ├── index.html             ← mục lục Chương 3
 │   ├── 01-…html … 14-bai-tap-tong-hop.html
 │   └── menu.json              ← dữ liệu cho bài fetch/async
-└── chuong4/                   ← Chương 4 — Bootstrap (4.1 → 4.6 + landing)
-    ├── index.html             ← mục lục Chương 4
-    └── 01-…html … 07-landing-tong-hop.html   (Bootstrap 5.3 qua CDN)
+├── chuong4/                   ← Chương 4 — Bootstrap (4.1 → 4.6 + landing)
+│   ├── index.html             ← mục lục Chương 4
+│   └── 01-…html … 07-landing-tong-hop.html   (Bootstrap 5.3 qua CDN)
+└── chuong5/                   ← Chương 5 — Tailwind CSS v4 (5.1 → 5.5 + dự án + trắc nghiệm)
+    ├── index.html             ← mục lục Chương 5
+    └── 01-…html … 09-trac-nghiem.html        (Tailwind v4 qua CDN)
 ```
 
 ## Ánh xạ chương ↔ giáo trình
@@ -31,7 +34,7 @@ WDCode/                        ← repo git (cả môn học)
 | **2** | Xây dựng giao diện Web với HTML & CSS | ✓ `chuong2/` |
 | **3** | Lập trình JavaScript căn bản | ✓ `chuong3/` |
 | **4** | Thiết kế Web hiện đại với Bootstrap | ✓ `chuong4/` (đọc thêm/tự chọn) |
-| 5 | Tuỳ biến giao diện với Tailwind CSS | *(chưa có)* |
+| **5** | Tuỳ biến giao diện với Tailwind CSS | ✓ `chuong5/` (Tailwind v4) |
 
 > **Trình tự giảng dạy:** đề cương dạy **Tailwind (Ch.5) trước JavaScript (Ch.3)**; cách đánh số ở đây
 > bám theo **giáo trình in** (JavaScript = Chương 3). Khung chi tiết: `../giao_an/giao_trinh/00_KHUNG_CHI_TIET.md`.
@@ -39,4 +42,4 @@ WDCode/                        ← repo git (cả môn học)
 ## Ghi chú kỹ thuật
 - **Assets dùng chung**: thư mục `assets/` ở gốc. Bài trong chương con tham chiếu `../../assets/…`;
   trang mục lục của chương dùng `../assets/…`; trang chủ cả môn dùng `assets/…`.
-- **Offline**: ảnh là SVG placeholder cục bộ. Riêng Font Awesome, YouTube embed, fetch API và **Chương 4 (Bootstrap qua CDN)** cần internet.
+- **Offline**: ảnh là SVG placeholder cục bộ. Riêng Font Awesome, YouTube embed, fetch API, **Chương 4 (Bootstrap qua CDN)** và **Chương 5 (Tailwind v4 qua CDN)** cần internet.
