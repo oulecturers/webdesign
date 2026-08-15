@@ -1,0 +1,206 @@
+/* ============================================================
+   src/input.css  —  ĐIỂM XUẤT PHÁT BUỔI 3
+   ------------------------------------------------------------
+   File này y hệt lúc kết thúc buổi 1: buổi 2 chỉ thêm class bố cục
+   vào HTML, không sửa một dòng CSS nào.
+
+   Mọi màu, phông chữ, bo góc của dự án khai báo MỘT LẦN ở đây.
+   Trong HTML tuyệt đối không viết bg-[#14705a], và từ buổi 3 thêm
+   một điều cấm nữa: không viết dark:bg-gray-800. Bảng màu mặc định
+   của Tailwind không liên quan gì tới thương hiệu của bạn.
+
+   Buổi 3 sửa file này TRƯỚC, sửa HTML SAU. Làm ngược lại là tự
+   chuốc thêm việc.
+   ============================================================ */
+
+@import "tailwindcss";
+
+/* Dark mode theo class trên thẻ <html>.
+   Khai báo sẵn từ buổi 1, đến buổi 3 mới dùng tới. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* ============================================================
+   DESIGN TOKEN  —  trích từ Figma ở tiết 1
+   ------------------------------------------------------------
+   TODO: nếu bạn làm sản phẩm khác, thay toàn bộ giá trị dưới đây
+   bằng bảng token bạn đã đọc từ Figma. Đổi ở đây là cả trang đổi
+   theo, không phải sửa từng file HTML.
+   ============================================================ */
+@theme {
+  /* Màu thương hiệu: xanh lá đậm, lấy từ màu lá dứa */
+  --color-brand-50:  #eef7f3;
+  --color-brand-100: #d6ebe3;
+  --color-brand-500: #1f8a6d;
+  --color-brand-600: #14705a;
+  --color-brand-700: #0f5a49;
+  --color-brand-900: #0a3b31;
+
+  /* Màu nhấn: vàng sáp. Dùng RẤT tiết chế — mỗi trang tối đa 3 chỗ */
+  --color-accent-300: #f7d27a;
+  --color-accent-400: #f0b429;
+  --color-accent-500: #d99a15;
+
+  /* Chữ và nền. Mỗi vai trò có một cặp sáng/tối để buổi 3 dùng lại */
+  --color-ink:          #12211d;
+  --color-ink-invert:   #eaf2ee;
+  --color-muted:        #5c6f69;
+  --color-muted-invert: #93a8a1;
+  --color-line:         #dfe6e2;
+  --color-line-invert:  #24403a;
+  --color-surface:      #ffffff;
+  --color-surface-alt:  #f5f8f6;
+  --color-surface-dark: #0e1c19;
+  --color-surface-dark-alt: #14312b;
+
+  /* Phông chữ. Be Vietnam Pro thiết kế riêng cho dấu tiếng Việt:
+     dấu không đè lên chữ hoa. Inter đọc tốt ở cỡ nhỏ. */
+  --font-display: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+
+  /* Bo góc — một giá trị duy nhất cho mọi thẻ trong dự án */
+  --radius-card: 0.875rem;
+  --radius-pill: 999px;
+
+  /* TODO buổi 3 · tiết 3: khai báo thêm ở đây
+       1. Một sắc thương hiệu ĐỦ SÁNG để làm chữ trên nền tối.
+          brand-600 đặt trên nền #0e1c19 là chìm. Đặt tên theo thang
+          đã có, đừng đặt tên kiểu --color-brand-dark.
+       2. TODO buổi 3 · tiết 5: một CẶP màu báo lỗi cho form
+          (--color-danger và --color-danger-invert). Đỏ đậm chuẩn
+          chìm nghỉm trên nền tối, nên lỗi phải có cặp như mọi vai
+          trò màu khác. */
+}
+
+
+/* ============================================================
+   TODO buổi 3 · tiết 3 — DARK MODE Ở TẦNG TOKEN
+
+   Đặt khối .dark ngay dưới đây, BÊN NGOÀI @theme:
+
+     .dark {
+       --color-ink:     var(--color-ink-invert);
+       --color-muted:   ...
+       --color-line:    ...
+       --color-surface: ...
+       ...
+     }
+
+   Ý tưởng: không đảo màu ở từng thẻ HTML, chỉ đổi GIÁ TRỊ của năm
+   token trung tính. Mọi class đã viết sẵn (bg-surface, text-ink,
+   text-muted, border-line) tự trỏ sang giá trị mới.
+
+   Nhờ vậy dark mode không phải là "viết lại giao diện lần hai", và
+   không có chuyện chỗ được chỗ không.
+
+   Ba lỗi hay gặp:
+     · Nền tối KHÔNG phải màu đen. #000 làm chữ sáng bị lóa.
+     · Chữ sáng KHÔNG phải màu trắng. Một sắc hơi ngả nền dịu hơn.
+     · Bóng đổ mất tác dụng trên nền tối — thay bằng viền.
+   ============================================================ */
+
+
+/* ============================================================
+   LỚP NỀN
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;   /* chừa chỗ cho navbar dính */
+  }
+
+  body {
+    @apply bg-surface text-ink font-body antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+  }
+
+  /* Người dùng bàn phím phải luôn nhìn thấy mình đang ở đâu.
+     Khai báo một lần ở đây, cả dự án được lợi. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600;
+  }
+}
+
+
+/* ============================================================
+   COMPONENT  —  đang có 8, buổi 3 cần 6–14
+   ------------------------------------------------------------
+   Quy tắc: một mẫu chỉ đưa vào đây khi lặp lại TỪ 3 LẦN TRỞ LÊN.
+   Hai lần thì để nguyên utility — trích sớm tốn công đặt tên, và
+   cái tên đó thường sai khi nhu cầu thứ ba xuất hiện.
+
+   Cách dùng: GHÉP class ở HTML  →  class="btn btn-primary"
+   KHÔNG viết .btn-primary { @apply btn ... } vì trong Tailwind v4
+   cách đó gãy: "Cannot apply unknown utility class".
+
+   TODO buổi 3 · tiết 3: component nào có MÀU RIÊNG thì tự lo trạng
+   thái tối của mình ngay tại đây (.card, .eyebrow, .badge…), để nơi
+   dùng không phải nhớ thêm gì. Khai báo trạng thái ở nơi khai báo
+   component — thêm thẻ mới là tự có luôn chế độ tối.
+
+   TODO buổi 3 · tiết 4: dựng pricing.html và contact.html sẽ làm lộ
+   ra vài mẫu mới đủ điều kiện trích. Gợi ý những mẫu đáng ngờ:
+     · dấu tick đầu mỗi dòng tính năng (đếm thử trong bảng giá)
+     · liên kết điều hướng, 8 chỗ mỗi trang × 3 trang
+     · nhãn / ô nhập / dòng báo lỗi của form (tiết 5)
+   Mục D của lab3.mjs đòi: 6–14 component, và ≥ 4 component phải
+   xuất hiện ở ÍT NHẤT HAI trang.
+   ============================================================ */
+@layer components {
+
+  /* Container chuẩn của mọi section, dùng cho toàn bộ trang.
+
+     TODO buổi 3 · tiết 2: py-28 (112px) là nhịp dọc của màn hình
+     rộng. Trên điện thoại nó ngốn hơn một phần tư chiều cao màn
+     hình cho khoảng trắng. Hạ nhịp mặc định xuống rồi mới nâng lên
+     ở lg — đó là mobile-first áp dụng cho khoảng cách, không chỉ
+     cho số cột. */
+  .section {
+    @apply mx-auto w-full max-w-6xl px-5 py-28;
+  }
+
+  /* Dòng chữ nhỏ in hoa nằm trên mỗi tiêu đề section */
+  .eyebrow {
+    @apply font-display text-xs font-semibold uppercase tracking-[0.18em] text-brand-600;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill px-5 py-2.5
+           text-sm font-semibold transition-colors duration-150
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary { @apply bg-brand-600 text-white hover:bg-brand-700; }
+  .btn-ghost   { @apply border border-line text-ink hover:bg-surface-alt; }
+  .btn-lg      { @apply px-7 py-3.5 text-base; }
+
+  /* Thẻ dùng chung — buổi 2 dùng cho tính năng và bảng giá */
+  .card {
+    @apply rounded-card border border-line bg-surface p-6;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-pill px-3 py-1 text-xs font-semibold;
+  }
+
+  /* ----------------------------------------------------------
+     KHỐI ĐẶC TRƯNG của sản phẩm này: tờ phiếu cân giấy, mép dưới
+     có đường răng cưa như phiếu xé từ cuốn biên lai.
+     Cả trang chỉ dùng MỘT chi tiết táo bạo, còn lại giữ kỷ luật.
+     Sản phẩm của bạn cũng nên có một khối tương tự — và chỉ một.
+     ---------------------------------------------------------- */
+  .ticket {
+    @apply relative rounded-card border border-line bg-surface p-6 shadow-xl;
+  }
+  .ticket::after {
+    content: "";
+    @apply absolute inset-x-0 -bottom-2 h-4;
+    background-image: radial-gradient(
+      circle at 6px 0, transparent 6px, var(--color-surface) 6px
+    );
+    background-size: 12px 12px;
+    background-repeat: repeat-x;
+  }
+}
