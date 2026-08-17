@@ -1,0 +1,14 @@
+{
+  "name": "vua-starter-buoi4",
+  "version": "1.0.0",
+  "description": "Starter buổi 4 — Vựa — kết quả cuối buổi 3 — môn Thực hành Thiết kế Web",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "private": true
+}
