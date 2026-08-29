@@ -1,0 +1,18 @@
+{
+  "name": "vua-starter-buoi5",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Starter buổi 5 — Vựa — kết quả cuối buổi 4 — môn Thực hành Thiết kế Web",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "private": true,
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  }
+}
